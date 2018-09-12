@@ -1,5 +1,9 @@
 <template>
-  <div>This is player.</div>
+  <div id='player'>
+    <button>Play</button>
+    <button>Pause</button>
+    <button>Stop</button>
+  </div>
 </template>
 
 <script>
