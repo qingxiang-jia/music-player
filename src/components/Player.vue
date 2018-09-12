@@ -1,18 +1,10 @@
 <template>
-  <div>
-    <p>This is app.</p>
-    <player></player>
-  </div>
+  <div>This is player.</div>
 </template>
 
 <script>
-import player from './components/Player.vue'
-
 export default {
-  name: "app",
-  components: {
-    player
-  }
+  name: "player"
 };
 </script>
 
