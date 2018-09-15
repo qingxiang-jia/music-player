@@ -7,18 +7,25 @@
 </template>
 
 <script>
+import {Howl, Howler} from '../../node_modules/howler/dist/howler.js';
+
 export default {
   name: 'player',
+  created: function() {
+    this.music = new Howl({
+      src: ['test-sound.mp3']
+    })
+  },
   methods: {
-    playClicked: function (event) {
-      console.log('play clicked!')
+    playClicked: function(event) {
+      this.music.play()
     },
-    pauseClicked: function (event) {
-      console.log('pause clicked!')
+    pauseClicked: function(event) {
+      this.music.pause()
     },
-    stopClicked: function (event) {
-      console.log('stop clicked!')
-    }
+    stopClicked: function(event) {
+      this.music.stop()
+    },
   }
 };
 </script>
