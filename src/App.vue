@@ -1,16 +1,19 @@
 <template>
   <div id='app'>
     <player></player>
+    <playlist></playlist>
   </div>
 </template>
 
 <script>
 import player from './components/Player.vue'
+import playlist from './components/Playlist.vue'
 
 export default {
   name: "app",
   components: {
-    player
+    player,
+    playlist
   }
 };
 </script>
