@@ -1,13 +1,22 @@
 <template>
   <div id='playlist'>
-    <p>here is playlist</p>
+    <p>Playlist</p>
+    <div>{{songs}}</div>
   </div>
 </template>
 
 <script>
 export default {
   name: "playlist",
-  methods: {}
+  created: function() {
+    this.$store.dispatch("fetchPlaylist");
+  },
+  methods: {},
+  computed: {
+    songs() {
+      return this.$store.state.playlist;
+    }
+  }
 };
 </script>
 
