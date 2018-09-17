@@ -7,7 +7,8 @@
 </template>
 
 <script>
-import {Howl, Howler} from '../../node_modules/howler/dist/howler.js';
+// import {Howl, Howler} from '../../node_modules/howler/dist/howler.js';
+import {Howl, Howler} from 'howler';
 
 export default {
   name: 'player',
