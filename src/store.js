@@ -7,11 +7,15 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    playlist: []
+    playlist: [],
+    nowPlaying: {}
   },
   mutations: {
     setPlaylist (state, newList) {
       state.playlist = newList
+    },
+    setNowPlaying (state, newSong) {
+      state.nowPlaying = newSong
     }
   },
   actions: {

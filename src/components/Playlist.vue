@@ -3,7 +3,7 @@
     <p>Playlist</p>
     <ul>
       <li v-for='song in songs'>
-        <a v-bind:href="song.url">{{ song.filename }}</a>
+        <span v-bind:href='song.url' v-on:click='songSelected'>{{ song.filename }}</span>
       </li>
     </ul>
   </div>
@@ -15,7 +15,11 @@ export default {
   created: function() {
     this.$store.dispatch("fetchPlaylist");
   },
-  methods: {},
+  methods: {
+    songSelected: function (event) {
+      this.$store.commit('setNowPlaying', {url: event.target.attributes.href.value, filename: event.target.innerHTML})
+    }
+  },
   computed: {
     songs() {
       return this.$store.state.playlist;
