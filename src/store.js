@@ -22,7 +22,7 @@ export default new Vuex.Store({
         let newList = []
         reader.on('done', data => {
           for (let element of data.children) {
-            newList.push({url: element.attributes.href, filename: element.children[0].value})
+            newList.push({url: 'http://localhost:8081/' + element.attributes.href, filename: element.children[0].value})
           }
         })
         reader.parse(response.data)
