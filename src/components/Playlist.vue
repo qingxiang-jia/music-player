@@ -1,7 +1,6 @@
 <template>
   <div id='playlist'>
     <p>Playlist</p>
-    <!-- <div>{{songs}}</div> -->
     <ul>
       <li v-for='song in songs'>
         <a v-bind:href="song.url">{{ song.filename }}</a>
