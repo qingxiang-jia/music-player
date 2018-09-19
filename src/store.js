@@ -10,6 +10,11 @@ export default new Vuex.Store({
     playlist: [],
     nowPlaying: {}
   },
+  getters: {
+    nowPlaying: state => {
+      return state.nowPlaying
+    }
+  },
   mutations: {
     setPlaylist (state, newList) {
       state.playlist = newList

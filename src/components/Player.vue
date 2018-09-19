@@ -9,6 +9,7 @@
 
 <script>
 import { Howl, Howler } from "howler";
+import { mapGetters } from "vuex";
 
 export default {
   name: "player",
@@ -29,8 +30,15 @@ export default {
     }
   },
   computed: {
-    nowPlaying() {
-      return this.$store.state.nowPlaying;
+    ...mapGetters(["nowPlaying"])
+  },
+  watch: {
+    nowPlaying: function(newVal) {
+      this.music.stop();
+      this.music = new Howl({
+        src: [newVal.url]
+      });
+      this.music.play();
     }
   }
 };

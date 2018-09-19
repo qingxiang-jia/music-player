@@ -23,8 +23,8 @@ export default {
   computed: {
     songs() {
       return this.$store.state.playlist;
-    }
-  }
+    },
+  },
 };
 </script>
 
