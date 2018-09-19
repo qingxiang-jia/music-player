@@ -6,6 +6,7 @@
     <button v-on:click='pauseClicked' v-bind:disabled='!playing'>Pause</button>
     <button v-on:click='stopClicked' v-bind:disabled='!playing'>Stop</button>
     <button>Next</button>
+    <button v-on:clicl='resetPlaylistClicked'>Reset playlist</button>
   </div>
 </template>
 
@@ -37,6 +38,10 @@ export default {
     stopClicked: function(event) {
       this.music.stop();
       this.playing = false;
+    },
+    resetPlaylistClicked: function(event) {
+      this.music.stop();
+      this.$store.commit('setPlaylist', [])
     }
   },
   computed: {
