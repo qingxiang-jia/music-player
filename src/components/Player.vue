@@ -1,9 +1,11 @@
 <template>
   <div id='player'>
     <div>Now playing: {{nowPlaying.filename}}</div>
+    <button>Prev</button>
     <button v-on:click='playClicked' v-bind:disabled='playing'>Play</button>
     <button v-on:click='pauseClicked' v-bind:disabled='!playing'>Pause</button>
     <button v-on:click='stopClicked' v-bind:disabled='!playing'>Stop</button>
+    <button>Next</button>
   </div>
 </template>
 
