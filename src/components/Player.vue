@@ -1,9 +1,9 @@
 <template>
   <div id='player'>
     <div>Now playing: {{nowPlaying.filename}}</div>
-    <button v-on:click='playClicked'>Play</button>
-    <button v-on:click='pauseClicked'>Pause</button>
-    <button v-on:click='stopClicked'>Stop</button>
+    <button v-on:click='playClicked' v-bind:disabled='playing'>Play</button>
+    <button v-on:click='pauseClicked' v-bind:disabled='!playing'>Pause</button>
+    <button v-on:click='stopClicked' v-bind:disabled='!playing'>Stop</button>
   </div>
 </template>
 
@@ -18,15 +18,23 @@ export default {
       src: ["test-sound.mp3"]
     });
   },
+  data: function () {
+    return {
+      playing: false
+    }
+  },
   methods: {
     playClicked: function(event) {
       this.music.play();
+      this.playing = true;
     },
     pauseClicked: function(event) {
       this.music.pause();
+      this.playing = false;
     },
     stopClicked: function(event) {
       this.music.stop();
+      this.playing = false;
     }
   },
   computed: {
@@ -39,6 +47,7 @@ export default {
         src: [newVal.url]
       });
       this.music.play();
+      this.playing = true;
     }
   }
 };
