@@ -6,8 +6,8 @@
 </template>
 
 <script>
-import player from './components/Player.vue'
-import playlist from './components/Playlist.vue'
+import player from "./components/Player.vue";
+import playlist from "./components/Playlist.vue";
 
 export default {
   name: "app",
