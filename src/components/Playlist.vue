@@ -1,7 +1,6 @@
 <template>
   <div id='playlist'>
     <p>Playlist</p>
-    <div>Selected song: {{ nowPlaying }}</div>
     <select size='20' v-model='nowPlaying'>
       <option v-for='song in songs' v-bind:value='song'>
         {{ song.filename }}
