@@ -6,6 +6,7 @@
     <button v-on:click='pauseClicked' v-bind:disabled='!playing'>Pause</button>
     <button v-on:click='stopClicked' v-bind:disabled='!playing'>Stop</button>
     <button v-on:click='nextClicked'>Next</button>
+    <input type="range" v-model='volume' min="0" max="20"/>
   </div>
 </template>
 
@@ -22,7 +23,8 @@ export default {
   },
   data: function() {
     return {
-      playing: false
+      playing: false,
+      volume: 10
     };
   },
   methods: {
@@ -62,10 +64,14 @@ export default {
     nowPlaying: function(newVal) {
       this.music.stop();
       this.music = new Howl({
-        src: [newVal.url]
+        src: [newVal.url],
+        volume: this.volume / 20
       });
       this.music.play();
       this.playing = true;
+    },
+    volume: function(newVal) {
+      this.music.volume(newVal / 20)
     }
   }
 };
