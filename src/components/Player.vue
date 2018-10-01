@@ -7,7 +7,7 @@
       <button v-on:click='pauseClicked' v-bind:disabled='!playing'>Pause</button>
       <button v-on:click='stopClicked' v-bind:disabled='!playing'>Stop</button>
       <button v-on:click='nextClicked'>Next</button>
-      <input type='range' v-model='volume' min='0' max='20'/>
+      🔊<input type='range' v-model='volume' min='0' max='20'/>
     </div>
   </div>
 </template>
