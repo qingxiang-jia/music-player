@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import axios from 'axios';
-import XmlReader from 'xml-reader';
+import axios from 'axios'
+import XmlReader from 'xml-reader'
 
 Vue.use(Vuex)
 
@@ -13,6 +13,9 @@ export default new Vuex.Store({
   getters: {
     nowPlaying: state => {
       return state.nowPlaying
+    },
+    playlist: state => {
+      return state.playlist
     }
   },
   mutations: {
@@ -30,8 +33,9 @@ export default new Vuex.Store({
         let reader = XmlReader.create()
         let newList = []
         reader.on('done', data => {
+          let i = 0
           for (let element of data.children) {
-            newList.push({url: 'http://localhost:8081/' + element.attributes.href, filename: element.children[0].value})
+            newList.push({index: i++, url: 'http://localhost:8081/' + element.attributes.href, filename: element.children[0].value})
           }
         })
         reader.parse(response.data)

@@ -1,12 +1,11 @@
 <template>
   <div id='player'>
     <div>Now playing: {{nowPlaying.filename}}</div>
-    <button>Prev</button>
+    <button v-on:click='prevClicked'>Prev</button>
     <button v-on:click='playClicked' v-bind:disabled='playing'>Play</button>
     <button v-on:click='pauseClicked' v-bind:disabled='!playing'>Pause</button>
     <button v-on:click='stopClicked' v-bind:disabled='!playing'>Stop</button>
-    <button>Next</button>
-    <button v-on:clicl='resetPlaylistClicked'>Reset playlist</button>
+    <button v-on:click='nextClicked'>Next</button>
   </div>
 </template>
 
@@ -21,31 +20,43 @@ export default {
       src: ["test-sound.mp3"]
     });
   },
-  data: function () {
+  data: function() {
     return {
       playing: false
-    }
+    };
   },
   methods: {
     playClicked: function(event) {
-      this.music.play();
-      this.playing = true;
+      this.music.play()
+      this.playing = true
     },
     pauseClicked: function(event) {
-      this.music.pause();
-      this.playing = false;
+      this.music.pause()
+      this.playing = false
     },
     stopClicked: function(event) {
-      this.music.stop();
-      this.playing = false;
+      this.music.stop()
+      this.playing = false
     },
-    resetPlaylistClicked: function(event) {
-      this.music.stop();
-      this.$store.commit('setPlaylist', [])
+    prevClicked: function(event) {
+      let currentIndex = this.nowPlaying.index
+      let nextIndex = currentIndex - 1
+      if (nextIndex >= 0) {
+        this.music.stop()
+        this.$store.commit("setNowPlaying", this.playlist[nextIndex]);
+      }
+    },
+    nextClicked: function(event) {
+      let currentIndex = this.nowPlaying.index
+      let nextIndex = currentIndex + 1
+      if (nextIndex < this.playlist.length) {
+        this.music.stop()
+        this.$store.commit("setNowPlaying", this.playlist[nextIndex]);
+      }
     }
   },
   computed: {
-    ...mapGetters(["nowPlaying"])
+    ...mapGetters(['nowPlaying', 'playlist'])
   },
   watch: {
     nowPlaying: function(newVal) {
